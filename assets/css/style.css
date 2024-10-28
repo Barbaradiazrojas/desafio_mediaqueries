@@ -1,4 +1,3 @@
-
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
@@ -20,14 +19,15 @@ body {
 .menu ul {
   list-style: none;
   padding: 0;
-  display: flex;
   margin: 0;
-  text-align: center;
+  display: flex;
+  flex-direction: column; /* Cambio para móviles */
+  align-items: center; /* Alineación centrada para los ítems del menú */
 }
 
 .menu ul li {
   padding: 10px 20px;
-  text-align: center;
+  width: 100%; /* Asegura que cada elemento del menú ocupe todo el ancho disponible */
 }
 
 .menu ul li a {
@@ -35,10 +35,11 @@ body {
   color: #fefefe;
   font-weight: bold;
   text-align: center;
+  display: block; /* Asegura que el área completa del ítem sea clickeable */
 }
 
 .logo img {
-  height: 100px;
+  height: 60px; /* Ajustado para una mejor proporción en móviles */
 }
 
 .filtros {
@@ -46,42 +47,20 @@ body {
   padding: 20px 0;
 }
 
-/* Estilos para móvil */
 .header, .menu, .productos, .producto {
   flex-direction: column;
 }
 
-/* Media query para desktop */
-@media (min-width: 576px) {
-  .header {
-      display: grid;
-      grid-template-areas: "logo menu";
-      grid-template-columns: 1fr 2fr;
-  }
+.productos {
+  padding: 0; /* Elimina el padding para evitar problemas de ancho en móviles */
+}
 
-  .logo {
-      grid-area: logo;
-  }
-
-  .menu {
-      grid-area: menu;
-  }
-
-  .productos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-      gap: 20px;
-      text-align: center;
-  }
+.producto {
+  margin-bottom: 20px; /* Aumenta el margen para mejor separación entre productos */
 }
 
 .producto img {
-  width: 100%;
-  transition: transform 0.3s ease;
-}
-
-.producto:hover img {
-  transform: scale(1.05);
+  width: 100%; /* Asegura que la imagen se adapte al contenedor */
 }
 
 .info-producto h3, .info-producto button {
@@ -92,8 +71,46 @@ body {
 button {
   background: #5c67f2;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  width: 100%; /* Botones de acción más accesibles en móviles */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho final */
 }
 
-footer{
+footer {
   text-align: center;
+  padding: 20px 10px;
+  background: #004d29;
+  color: white; /* Mejora la legibilidad en el footer */
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* Media query para desktop */
+@media (min-width: 576px) {
+  .menu ul {
+      flex-direction: row; /* Restaura la orientación horizontal para el menú */
+  }
+
+  .menu ul li {
+      width: auto; /* Deshacer el ancho completo para elementos de menú en escritorio */
+  }
+
+  .productos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+  }
+
+  .producto {
+      margin-bottom: 0; /* Elimina el margen entre productos en escritorio */
+  }
+
+  .logo img {
+      height: 100px; /* Restaura el tamaño original del logo para escritorio */
+  }
+
+  button {
+      width: auto; /* Restablece el ancho automático para botones en escritorio */
+  }
 }
